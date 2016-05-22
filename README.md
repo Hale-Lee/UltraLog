@@ -19,47 +19,70 @@ One of the best way to write log, can re-locate the output to different device s
 write a log to output device as the following
   
   usage:  
+  
    ILog * theLog = GetLogInstance();
+   
    theLog->AddRecord("Hello, world", ILog::LogInfo);
     
-	virtual VOID AddRecord(LPCTSTR szMessage, LogType type= logInfo) = NULL;
-	virtual VOID AddRecord(LogType type , LPCTSTR lpszFormat, ...) = NULL;
+   virtual VOID AddRecord(LPCTSTR szMessage, LogType type= logInfo) = NULL;
+   
+   virtual VOID AddRecord(LogType type , LPCTSTR lpszFormat, ...) = NULL;
 	
 	
 the log output level is the below.
  
  char *szAllLevel[] = {"debug", "info". "warning", "error", "fatal"};
+ 
  which is defined in config file.
  
  the sample of config file is the below , which is als can be merged to the other ini file of caller.
  
  [Log]
+ 
 Output = File, Screen, Mail , SMS
 
 [FileLog]
-FileName = E:\GAME\Kiwa-tech\log\gate.log
+
+FileName = E:\Kiwa-tech\log\gate.log
+
 MaxSize = 5120 K
+
 LogLevel = Debug
+
 Remark = 
 
 [ScreenLog]
+
 ListBoxName = LogListBox
+
 MaxSize = 1024
+
 LogLevel = Debug
+
 Remark = 
 
 [MailLog]
+
 SMTPServer = 163.com
+
 User = test
+
 password = test
+
 LogLevel = Debug
+
 GroupSize = 128
+
 Remark = 
 
 [SMSLog]
+
 MoblieNo = 15800888888
+
 LogLevel = Fatal
+
 GroupSize = 1
+
 Remark = 
 
 [WeChatLog]
