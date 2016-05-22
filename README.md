@@ -37,9 +37,13 @@ the log output level is the below.
  
  the sample of config file is the below , which is als can be merged to the other ini file of caller.
  
+ 
+ 
+ 
  [Log]
  
 Output = File, Screen, Mail , SMS
+
 
 [FileLog]
 
@@ -51,6 +55,7 @@ LogLevel = Debug
 
 Remark = 
 
+
 [ScreenLog]
 
 ListBoxName = LogListBox
@@ -60,6 +65,7 @@ MaxSize = 1024
 LogLevel = Debug
 
 Remark = 
+
 
 [MailLog]
 
@@ -75,6 +81,7 @@ GroupSize = 128
 
 Remark = 
 
+
 [SMSLog]
 
 MoblieNo = 15800888888
@@ -85,9 +92,13 @@ GroupSize = 1
 
 Remark = 
 
+
 [WeChatLog]
+
 Group = 
+
 Account = 
+
 LogLevel = Fatal
 
 
