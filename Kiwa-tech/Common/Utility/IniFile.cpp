@@ -7,7 +7,7 @@
 //	Version: 	1.0
 //	Date: 		2012-01-09
 //	
-//	Purpose:	IniÎÄ¼şµÄ±ê×¼ÊäÈëÊä³öÀà£¬ÓÃÀ´¶ÁÈëIniÎÄ¼şºÍĞ´ÈëIniÎÄ¼ş¡£
+//	Purpose:	Iniæ–‡ä»¶çš„æ ‡å‡†è¾“å…¥è¾“å‡ºç±»ï¼Œç”¨æ¥è¯»å…¥Iniæ–‡ä»¶å’Œå†™å…¥Iniæ–‡ä»¶ã€‚
 //	
 /////////////////////////////////////////////////////////////////////////////////////////
 #include "stdafx.h"
@@ -32,12 +32,12 @@ static const int MAX_PATH_SIZE = 256;
 // Function:    CIniFile()
 //
 // Description:
-//  ¹¹Ôìº¯Êı£¬¸ù¾İÖ¸¶¨µÄIniÎÄ¼şÀ´Éú³É±¾¶ÔÏó¡£
-//	£¨Èç¹ûIniÎÄ¼şÖĞ²»´ø\\£¬ÄÇÃ´×Ô¶¯Ìí¼Óµ±Ç°Ä¿Â¼¡££©
+//  æ„é€ å‡½æ•°ï¼Œæ ¹æ®æŒ‡å®šçš„Iniæ–‡ä»¶æ¥ç”Ÿæˆæœ¬å¯¹è±¡ã€‚
+//	ï¼ˆå¦‚æœIniæ–‡ä»¶ä¸­ä¸å¸¦\\ï¼Œé‚£ä¹ˆè‡ªåŠ¨æ·»åŠ å½“å‰ç›®å½•ã€‚ï¼‰
 //
 //
 // Input:
-//  LPCTSTR szFileName			--	IniÎÄ¼şÃû
+//  LPCTSTR szFileName			--	Iniæ–‡ä»¶å
 //
 // Returns:
 //  Nothing
@@ -75,7 +75,7 @@ CIniFile::CIniFile(LPCTSTR szFileName)
 // Function:    CIniFile()
 //
 // Description:
-//  Îö¹¹º¯Êı£¬É¾³ı³ÉÔ±±äÁ¿£¬ÊÍ·Å³ÉÔ±±äÁ¿µÄÖ¸Õë¡£
+//  ææ„å‡½æ•°ï¼Œåˆ é™¤æˆå‘˜å˜é‡ï¼Œé‡Šæ”¾æˆå‘˜å˜é‡çš„æŒ‡é’ˆã€‚
 //
 //
 // Input:
@@ -113,14 +113,14 @@ CIniFile::~CIniFile()
 // Function:    Open()
 //
 // Description:
-//  ´ò¿ªIniÎÄ¼ş,Í¬Ê±¶ÁÈëµ½³ÉÔ±±äÁ¿ÖĞ¡£
+//  æ‰“å¼€Iniæ–‡ä»¶,åŒæ—¶è¯»å…¥åˆ°æˆå‘˜å˜é‡ä¸­ã€‚
 //
 //
 // Input:
-//  BOOL isReadOnly           -- ÊÇ·ñÒÔÖ»¶Á·½Ê½´ò¿ª£¬È±Ê¡Îª·ÇÖ»¶Á¡£
+//  BOOL isReadOnly           -- æ˜¯å¦ä»¥åªè¯»æ–¹å¼æ‰“å¼€ï¼Œç¼ºçœä¸ºéåªè¯»ã€‚
 //
 // Returns:
-//  BOOL		TRUE/FALSE	--ÎÄ¼ş´ò¿ª³É¹¦»òÕßÊ§°Ü¡£
+//  BOOL		TRUE/FALSE	--æ–‡ä»¶æ‰“å¼€æˆåŠŸæˆ–è€…å¤±è´¥ã€‚
 //
 //	---------------------------------------------------------------------------
 BOOL CIniFile::Open(BOOL isReadOnly /* = FALSE */)
@@ -256,14 +256,14 @@ BOOL CIniFile::Open(BOOL isReadOnly /* = FALSE */)
 // Function:    Close()
 //
 // Description:
-//  ¹Ø±ÕIniÎÄ¼ş,Í¬Ê±°Ñ³ÉÔ±±äÁ¿Ğ´µ½ÎÄ¼şÖĞ¡£
+//  å…³é—­Iniæ–‡ä»¶,åŒæ—¶æŠŠæˆå‘˜å˜é‡å†™åˆ°æ–‡ä»¶ä¸­ã€‚
 //
 //
 // Input:
 //  Nothing
 //
 // Returns:
-//  BOOL		TRUE/FALSE	--ÎÄ¼ş¹Ø±Õ³É¹¦»òÕßÊ§°Ü¡£
+//  BOOL		TRUE/FALSE	--æ–‡ä»¶å…³é—­æˆåŠŸæˆ–è€…å¤±è´¥ã€‚
 //
 //	---------------------------------------------------------------------------
 BOOL CIniFile::Close()
@@ -289,20 +289,19 @@ BOOL CIniFile::Close()
 // Function:    Find()
 //
 // Description:
-//  ¸ù¾İSectionNameºÍItemÃû³ÆÀ´²éÕÒ¶ÔÓ¦µÄÖµ¡£
+//  æ ¹æ®SectionNameå’ŒItemåç§°æ¥æŸ¥æ‰¾å¯¹åº”çš„å€¼ã€‚
 //
 //
 // Input:
-//  LPCTSTR szSection		--	Section Name£¬²»ÄÜÎª¿Õ¡£
-//	LPCTSTR szItem			--	Item Name£¬²»ÄÜÎª¿Õ¡£
+//  LPCTSTR szSection		--	Section Nameï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//	LPCTSTR szItem			--	Item Nameï¼Œä¸èƒ½ä¸ºç©ºã€‚
 //
 // Returns:
-//  CString					--	·µ»ØµÄValue£¬Èç¹ûÃ»ÓĞÕÒµ½£¬ÄÇÃ´·µ»Ø¿Õ´®
+//  CString					--	è¿”å›çš„Valueï¼Œå¦‚æœæ²¡æœ‰æ‰¾åˆ°ï¼Œé‚£ä¹ˆè¿”å›ç©ºä¸²
 //
 //	---------------------------------------------------------------------------
 CString CIniFile::Find(LPCTSTR szSection, LPCTSTR szItem)
 {
-	ASSERT(szSection.length() > 0);
 
 	CString strSection(szSection);
 	CString strItem(szItem);
@@ -349,17 +348,17 @@ CString CIniFile::Find(LPCTSTR szSection, LPCTSTR szItem)
 // Function:    WriteValue()
 //
 // Description:
-//  °Ñ²ÎÊıÖĞµÄÄÚÈİĞ´µ½ÀàµÄ³ÉÔ±±äÁ¿ÖĞ¡£
+//  æŠŠå‚æ•°ä¸­çš„å†…å®¹å†™åˆ°ç±»çš„æˆå‘˜å˜é‡ä¸­ã€‚
 //
 //
 // Input:
-//  LPCTSTR szSection		--	Section Name£¬²»ÄÜÎª¿Õ¡£
-//	LPCTSTR szItem			--	Item Name£¬¿ÉÒÔÎª¿Õ¡£
-//	LPCTSTR szValue			--	ÒªĞ´ÈëµÄÖµ¡£
-//	LPCTSTR szComment		--	ÒªĞ´ÈëµÄComment£¬¿ÉÒÔÎª¿Õ¡£
+//  LPCTSTR szSection		--	Section Nameï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//	LPCTSTR szItem			--	Item Nameï¼Œå¯ä»¥ä¸ºç©ºã€‚
+//	LPCTSTR szValue			--	è¦å†™å…¥çš„å€¼ã€‚
+//	LPCTSTR szComment		--	è¦å†™å…¥çš„Commentï¼Œå¯ä»¥ä¸ºç©ºã€‚
 //
 // Returns:
-//  BOOL		TRUE/FALSE	--	Ğ´²Ù×÷³É¹¦»òÕßÊ§°Ü¡£
+//  BOOL		TRUE/FALSE	--	å†™æ“ä½œæˆåŠŸæˆ–è€…å¤±è´¥ã€‚
 //
 //	---------------------------------------------------------------------------
 BOOL CIniFile::WriteValue(LPCTSTR szSection, LPCTSTR szItem, LPCTSTR szValue, LPCTSTR szComment /* = NULL*/)
@@ -575,14 +574,14 @@ BOOL CIniFile::Flush()
 // Function:    IsFileExist()
 //
 // Description:
-//  ÎÄ¼ş²Ù×÷Ààº¯Êı£¬Õâ¸öº¯ÊıÓÃÀ´ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ¡£
+//  æ–‡ä»¶æ“ä½œç±»å‡½æ•°ï¼Œè¿™ä¸ªå‡½æ•°ç”¨æ¥åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨ã€‚
 //
 //
 // Input:
-//  CString szFileName		--	ÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
+//  CString szFileName		--	æ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
 //
 // Returns:
-//  BOOL		TRUE/FALSE	--	´æÔÚ»òÔò²»´æÔÚ¡£
+//  BOOL		TRUE/FALSE	--	å­˜åœ¨æˆ–åˆ™ä¸å­˜åœ¨ã€‚
 //
 //	---------------------------------------------------------------------------
 bool CIniFile::IsFileExist(CString szFileName)
@@ -600,12 +599,12 @@ bool CIniFile::IsFileExist(CString szFileName)
 // Function:    CopyFileTo()
 //
 // Description:
-//  ÎÄ¼ş²Ù×÷Ààº¯Êı£¬¿½±´Ò»¸öÎÄ¼şµ½ÁíÍâÒ»¸öÎÄ¼şÃû¡£
+//  æ–‡ä»¶æ“ä½œç±»å‡½æ•°ï¼Œæ‹·è´ä¸€ä¸ªæ–‡ä»¶åˆ°å¦å¤–ä¸€ä¸ªæ–‡ä»¶åã€‚
 //
 //
 // Input:
-//  CString szDestFileName		--	Ä¿µÄÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
-//  CString szSrcFileName		--	Ô´ÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
+//  CString szDestFileName		--	ç›®çš„æ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//  CString szSrcFileName		--	æºæ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
 //
 // Returns:
 //  Nothing
@@ -623,14 +622,14 @@ void CIniFile::CopyFileTo(CString szDestFileName, CString szSrcFileName)
 // Function:    GetWinSysPath()
 //
 // Description:
-//  ÎÄ¼ş²Ù×÷Ààº¯Êı£¬¶ÁÈ¡ÏµÍ³ÎÄ¼ş¼ĞµÄÂ·¾¶¡£
+//  æ–‡ä»¶æ“ä½œç±»å‡½æ•°ï¼Œè¯»å–ç³»ç»Ÿæ–‡ä»¶å¤¹çš„è·¯å¾„ã€‚
 //
 //
 // Input:
 //  Nothing
 //
 // Returns:
-//  CString               -- ¶Á³öÀ´µÄÂ·¾¶¡£
+//  CString               -- è¯»å‡ºæ¥çš„è·¯å¾„ã€‚
 //
 //	---------------------------------------------------------------------------
 CString CIniFile::GetWinSysPath(void)
@@ -647,14 +646,14 @@ CString CIniFile::GetWinSysPath(void)
 // Function:    GetAppPath()
 //
 // Description:
-//  ÎÄ¼ş²Ù×÷Ààº¯Êı£¬¶ÁÈ¡Ó¦ÓÃ³ÌĞòÎÄ¼ş¼ĞµÄÂ·¾¶¡£
+//  æ–‡ä»¶æ“ä½œç±»å‡½æ•°ï¼Œè¯»å–åº”ç”¨ç¨‹åºæ–‡ä»¶å¤¹çš„è·¯å¾„ã€‚
 //
 //
 // Input:
 //  Nothing
 //
 // Returns:
-//  CString               -- ¶Á³öÀ´µÄÂ·¾¶¡£
+//  CString               -- è¯»å‡ºæ¥çš„è·¯å¾„ã€‚
 //
 //	---------------------------------------------------------------------------
 CString CIniFile::GetAppPath(void)
@@ -671,16 +670,16 @@ CString CIniFile::GetAppPath(void)
 // Function:    GetKeyVal()
 //
 // Description:
-//  ÎÄ¼ş²Ù×÷Ààº¯Êı£¬¸ù¾İSectionºÍKeyÀ´¶ÁÈ¡Ò»¸öÕûĞÎÖµ¡£
+//  æ–‡ä»¶æ“ä½œç±»å‡½æ•°ï¼Œæ ¹æ®Sectionå’ŒKeyæ¥è¯»å–ä¸€ä¸ªæ•´å½¢å€¼ã€‚
 //
 //
 // Input:
-//  CString szSectionName		--	Ä¿µÄÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
-//  CString szKeyName		    --	Ô´ÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
-//  int ipDefault		        --	È±Ê¡Öµ
+//  CString szSectionName		--	ç›®çš„æ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//  CString szKeyName		    --	æºæ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//  int ipDefault		        --	ç¼ºçœå€¼
 //
 // Returns:
-//  int                         --  ¶Á³öÀ´µÄÖµ£¬»òÕßÊÇÈ±Ê¡Öµ¡£
+//  int                         --  è¯»å‡ºæ¥çš„å€¼ï¼Œæˆ–è€…æ˜¯ç¼ºçœå€¼ã€‚
 //
 //	---------------------------------------------------------------------------
 int CIniFile::GetKeyVal(CString szSectionName, CString szKeyName, int ipDefault)
@@ -699,16 +698,16 @@ int CIniFile::GetKeyVal(CString szSectionName, CString szKeyName, int ipDefault)
 // Function:    GetKeyVal()
 //
 // Description:
-//  ÎÄ¼ş²Ù×÷Ààº¯Êı£¬¸ù¾İSectionºÍKeyÀ´¶ÁÈ¡Ò»¸ö×Ö·û´®Öµ¡£
+//  æ–‡ä»¶æ“ä½œç±»å‡½æ•°ï¼Œæ ¹æ®Sectionå’ŒKeyæ¥è¯»å–ä¸€ä¸ªå­—ç¬¦ä¸²å€¼ã€‚
 //
 //
 // Input:
-//  CString szSectionName		--	Ä¿µÄÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
-//  CString szKeyName		    --	Ô´ÎÄ¼şÃû£¨È«Â·¾¶£©£¬²»ÄÜÎª¿Õ¡£
-//  CString szDefault		    --	È±Ê¡Öµ
+//  CString szSectionName		--	ç›®çš„æ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//  CString szKeyName		    --	æºæ–‡ä»¶åï¼ˆå…¨è·¯å¾„ï¼‰ï¼Œä¸èƒ½ä¸ºç©ºã€‚
+//  CString szDefault		    --	ç¼ºçœå€¼
 //
 // Returns:
-//  CString                     --  ¶Á³öÀ´µÄÖµ£¬»òÕßÊÇÈ±Ê¡Öµ¡£
+//  CString                     --  è¯»å‡ºæ¥çš„å€¼ï¼Œæˆ–è€…æ˜¯ç¼ºçœå€¼ã€‚
 //
 //	---------------------------------------------------------------------------
 CString CIniFile::GetKeyVal(CString szSectionName, CString szKeyName, LPCTSTR szDefault)
