@@ -47,7 +47,7 @@ the log output level is the below.
  
  [Log]
  
-Output = File, Screen, Mail , SMS	#print the log to File, Screen, mail and SMS
+Output = File, Screen, Mail , SMS	#print the log to File, Screen, mail and SMS, can be one of these
 
 
 
