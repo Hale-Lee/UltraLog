@@ -7,7 +7,7 @@ One of the best way to write log, can re-locate the output to different device s
  
   extern "C" LOGDLL_DECLARE ILog *  GetLogInstance();
   
-  // add a new log output device to Ultralog, all of the deivce would be outputted to.
+  // add a new log output device to Ultralog, all of the deivce which is defined in IniFile would be outputted to.
   
   extern "C" LOGDLL_DECLARE void AddNewLog(ILog * pNewLog);
   
@@ -24,6 +24,11 @@ write a log to output device as the following
    
    theLog->AddRecord("Hello, world", ILog::LogInfo);
     
+   or 
+   LPSTR szMsg = "Hello, world";
+   theLog->AddRecord(ILog:LogInfo, "the message is %s", szMsg);
+   
+   
    virtual VOID AddRecord(LPCTSTR szMessage, LogType type= logInfo) = NULL;
    
    virtual VOID AddRecord(LogType type , LPCTSTR lpszFormat, ...) = NULL;
@@ -42,25 +47,26 @@ the log output level is the below.
  
  [Log]
  
-Output = File, Screen, Mail , SMS
+Output = File, Screen, Mail , SMS	#print the log to File, Screen, mail and SMS
+
 
 
 [FileLog]
 
-FileName = E:\Kiwa-tech\log\gate.log
+FileName = E:\Kiwa-tech\log\gate.log	# the filename of the Log, can used absolute diectory or relative dirctory.
 
-MaxSize = 5120 K
+MaxSize = 5120 K	# the maximue size of the log file ,when over the maxsize, the log file will be backuped.
 
 LogLevel = Debug
 
-Remark = 
+Remark =     #anythings you want to input.
 
 
 [ScreenLog]
 
-ListBoxName = LogListBox
+ListBoxName = LogListBox	#the controller which shown the log message.
 
-MaxSize = 1024
+MaxSize = 1024			# thea maximue lines of the listbox controller.
 
 LogLevel = Debug
 
@@ -69,7 +75,7 @@ Remark =
 
 [MailLog]
 
-SMTPServer = 163.com
+SMTPServer = 163.com	 	# the smtp server of mail
 
 User = test
 
@@ -84,7 +90,7 @@ Remark =
 
 [SMSLog]
 
-MoblieNo = 15800888888
+MoblieNo = 15800888888		#the moblile you used to send the log.
 
 LogLevel = Fatal
 
@@ -95,9 +101,9 @@ Remark =
 
 [WeChatLog]
 
-Group = 
+Group = 			#which group you want to send log, can be the wechat account and wechat group
 
-Account = 
+Account = 			#your account to used send the log
 
 LogLevel = Fatal
 
