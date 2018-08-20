@@ -1,7 +1,7 @@
 # UltraLog
 One of the best way to write log, can re-locate the output to different device such as screen/file/wechat/mail/sms
 
- All of the function was packaged to a DLL, you can use it very simple.
+ All of the function was packaged to a DLL, you can use it very easy.
  
  // Get one of instance of UltraLog, used singlton design pattern.
  
